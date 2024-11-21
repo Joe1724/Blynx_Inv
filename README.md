@@ -1,14 +1,3 @@
-# Inventory System: Laravel 10, Bootstrap 5.3, MySQL, Blade Template, Eloquent
-
-This is my first project after I have been learning Laravel for approximately 3-4 weeks.
-And I tried to apply all the things I learned, to create a simple Inventory System, even though it is not API based, but I am quite proud, because I succeeded in designing the System from scratch.
-And in the future, if I learn enough things about the Laravel API, I will try to implement it in the API version.
-
-I updated this readme.md on 10/02/2024, the api version has been released, you can visit the repository below:
-- https://github.com/weiwei2694/laravel10-restful-api-inventory-system
-
-<img src="public/assets/products-preview.PNG" alt="Products Preview" />
-<img src="public/assets/orders-preview.PNG" alt="Products Preview" />
 
 ## Key Features
 
@@ -33,8 +22,8 @@ I updated this readme.md on 10/02/2024, the api version has been released, you c
 ## Cloning the repository
 
 ```bash
-git clone https://github.com/weiwei2694/laravel10-inventory-system.git
-cd laravel10-inventory-system
+git clone https://github.com/Joe1724/Blynx_Inv
+cd Blynx_Inv
 ```
 
 ## Install packages
