@@ -1,0 +1,17 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';  // Assuming you have a variables.scss file in the same directory
+
+// Bootstrap (with the correct path)
+@import '~bootstrap/scss/bootstrap';  // The tilde tells Vite to resolve this from node_modules
+@import 'bootstrap-icons/font/bootstrap-icons.css';  // Bootstrap Icons (CSS)
+
+// Tailwind CSS (This should be at the bottom)
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Import Flowbite styles
+@import 'flowbite';  // Ensure Flowbite is installed and correctly imported
