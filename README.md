@@ -1,5 +1,4 @@
 
-
 ## Key Features
 
 - Roles System
@@ -23,8 +22,8 @@
 ## Cloning the repository
 
 ```bash
-git clone https://github.com/weiwei2694/laravel10-inventory-system.git
-cd laravel10-inventory-system
+git clone https://github.com/Joe1724/Blynx_Inv
+cd Blynx_Inv
 ```
 
 ## Install packages
