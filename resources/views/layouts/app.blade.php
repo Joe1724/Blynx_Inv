@@ -29,7 +29,7 @@
     <nav class="text-white bg-gray-900 shadow-md">
         <div class="flex items-center justify-between max-w-screen-xl p-4 mx-auto">
             <a href="{{ route('dashboard.index') }}" class="text-2xl font-semibold">
-                Inventory System
+               Orland Watch
             </a>
 
             <div class="flex items-center space-x-4">
