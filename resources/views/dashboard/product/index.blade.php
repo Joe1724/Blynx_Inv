@@ -64,7 +64,7 @@
                         <td class="flex gap-2 px-6 py-4">
                             <a href="{{ route('dashboard.products.show', $product->id) }}" class="px-3 py-2 text-sm text-white bg-gray-600 rounded-lg hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-800">View</a>
                             @can('product-edit-update-destroy', $product)
-                                <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="POST">
+                                <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="POST" class="inline" onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="px-3 py-2 text-sm text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">Delete</button>

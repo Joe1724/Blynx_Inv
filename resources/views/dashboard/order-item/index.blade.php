@@ -54,7 +54,7 @@
                             <div class="flex gap-2">
                                 <a href="{{ route('dashboard.order-items.show', $item->id) }}"
                                    class="px-3 py-2 text-sm text-white bg-gray-600 rounded-lg hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-800">View</a>
-                                <form action="{{ route('dashboard.order-items.destroy', $item->id) }}" method="POST">
+                                <form action="{{ route('dashboard.order-items.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
