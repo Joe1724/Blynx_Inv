@@ -9,37 +9,39 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.orders.show', $order->id) }}" class="btn btn-primary">Back</a>
+    <a href="{{ route('dashboard.orders.show', $order->id) }}"
+       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Back</a>
 
     {{-- Table --}}
-    <div class="mt-4 table-responsive">
-        <table class="table">
-            <thead>
+    <div class="mt-6 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Id</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Product Id</th>
-                    <th scope="col">Order Id</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">#</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">Id</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">Quantity</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">Unit Price</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">Product Id</th>
+                    <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-700">Order Id</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($orderItems as $item)
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->quantity }}</td>
-                        <td>${{ number_format($item->unit_price) }}</td>
-                        <td>{{ $item->product_id }}</td>
-                        <td>{{ $order->id }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-500">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900">{{ $item->id }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900">{{ $item->quantity }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900">${{ number_format($item->unit_price, 2) }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900">{{ $item->product_id }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900">{{ $order->id }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <div class="mt-3">
-            {{ $orderItems->links() }}
+        {{-- Pagination --}}
+        <div class="px-4 py-3 bg-gray-50 border-t">
+            {{ $orderItems->links('vendor.pagination.tailwind') }}
         </div>
     </div>
     {{-- End Of Table --}}
