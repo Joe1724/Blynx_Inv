@@ -49,7 +49,7 @@
                                 <div class="flex gap-2">
                                     <a href="{{ route('dashboard.users.show', $user->id) }}" class="px-3 py-2 text-sm text-white bg-gray-600 rounded-lg hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-800">View</a>
                                     @can('user-destroy', $user)
-                                        <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST" class="inline-block" onsubmit="return confirmDelete()">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-3 py-2 text-sm text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">Delete</button>

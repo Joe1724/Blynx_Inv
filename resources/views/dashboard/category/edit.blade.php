@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.categories.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
+    <a href="{{ route('dashboard.categories.index') }}" class="px-4 py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600">
         Back
     </a>
 
@@ -30,7 +30,7 @@
                     autofocus
                     placeholder="Enter category name"
                     value="{{ old('name', $category->name) }}"
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror"
+                    class="mt-1 block w-half rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror"
                 >
                 @error('name')
                     <p class="mt-2 text-sm text-red-600">
@@ -41,7 +41,7 @@
             {{-- End of Name --}}
 
             {{-- Button Submit --}}
-            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
+            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md w-half hover:bg-blue-600">
                 Save
             </button>
             {{-- End of Button Submit --}}

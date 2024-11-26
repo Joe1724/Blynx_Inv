@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.products.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
+    <a href="{{ route('dashboard.products.index') }}" class="px-4 py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600">
         Back
     </a>
 
@@ -22,7 +22,7 @@
                 type="text"
                 value="{{ $product->name }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Name --}}
@@ -34,7 +34,7 @@
                 id="description"
                 rows="6"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
             >{{ $product->description }}</textarea>
         </div>
         {{-- End of Description --}}
@@ -47,7 +47,7 @@
                 type="number"
                 value="{{ $product->price }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Price --}}
@@ -60,7 +60,7 @@
                 type="number"
                 value="{{ $product->quantity_in_stock }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Quantity In Stock --}}
@@ -73,7 +73,7 @@
                 type="text"
                 value="{{ $product->category->name }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Category --}}
@@ -86,7 +86,7 @@
                 type="text"
                 value="{{ $product->user_id }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of User ID --}}
@@ -99,7 +99,7 @@
                 type="text"
                 value="{{ $product->created_at->diffForHumans() }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Created At --}}
@@ -112,9 +112,10 @@
                 type="text"
                 value="{{ $product->updated_at->diffForHumans() }}"
                 disabled
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block mt-1 border-gray-300 rounded-md shadow-sm w-half focus:ring focus:ring-opacity-50"
             />
         </div>
         {{-- End of Updated At --}}
     </div>
+
 @endsection

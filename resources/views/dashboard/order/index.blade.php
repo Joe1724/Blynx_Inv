@@ -49,7 +49,7 @@
                                 View
                             </a>
                             @can('order-edit-update-delete', $order)
-                                <form action="{{ route('dashboard.orders.destroy', $order->id) }}" method="POST">
+                                <form action="{{ route('dashboard.orders.destroy', $order->id) }}" method="POST" class="inline" onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">

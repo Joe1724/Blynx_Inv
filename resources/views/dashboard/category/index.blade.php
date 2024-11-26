@@ -25,7 +25,6 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
 
-                    
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3">Products</th>
                     <th scope="col" class="px-6 py-3">Action</th>
@@ -34,12 +33,11 @@
             <tbody>
                 @foreach ($categories as $category)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-
                         <td class="px-6 py-4">{{ $category->id }}</td>
                         <td class="px-6 py-4">{{ $category->name }}</td>
                         <td class="px-6 py-4">{{ $category->products->count() }}</td>
                         <td class="flex items-center gap-2 px-6 py-4">
-                            <form action="{{ route('dashboard.categories.destroy', $category->id) }}" method="POST" class="inline">
+                            <form action="{{ route('dashboard.categories.destroy', $category->id) }}" method="POST" class="inline" onsubmit="return confirmDelete()">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="px-3 py-1 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">
@@ -60,4 +58,7 @@
         </div>
     </div>
     {{-- End Of Table --}}
+
+    <!-- Include the compiled JS file -->
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection
