@@ -9,77 +9,78 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.orders.index') }}" class="btn btn-primary">Back</a>
+    <a href="{{ route('dashboard.orders.index') }}"
+       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Back</a>
 
-    <div class="gap-3 mt-4 d-flex flex-column">
+    <div class="mt-6 space-y-4">
         {{-- Customer Name --}}
-        <div class="form-floating">
-            <input id="customer-name" type="text" class="form-control" name="customer-name" required
-                autocomplete="customer-name" placeholder="Customer Name" value="{{ $order->customer_name }}" disabled>
-            <label for="customer-name">Customer Name</label>
+        <div>
+            <label for="customer-name" class="block mb-2 text-sm font-medium text-gray-700">Customer Name</label>
+            <input type="text" id="customer-name"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->customer_name }}" disabled>
         </div>
-        {{-- End Of Customer Name --}}
 
         {{-- Customer Email --}}
-        <div class="form-floating">
-            <input id="customer-email" type="text" class="form-control" name="customer-email" required
-                autocomplete="customer-email" placeholder="Customer Email" value="{{ $order->customer_email }}" disabled>
-            <label for="customer-email">Customer Email</label>
+        <div>
+            <label for="customer-email" class="block mb-2 text-sm font-medium text-gray-700">Customer Email</label>
+            <input type="text" id="customer-email"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->customer_email }}" disabled>
         </div>
-        {{-- End Of Customer Email --}}
 
         {{-- Date --}}
-        <div class="form-floating">
-            <input id="date" type="text" class="form-control" name="date" required autocomplete="date"
-                placeholder="Date" value="{{ $order->date }}" disabled />
-            <label for="date">Date</label>
+        <div>
+            <label for="date" class="block mb-2 text-sm font-medium text-gray-700">Date</label>
+            <input type="text" id="date"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->date }}" disabled>
         </div>
-        {{-- End Of Date --}}
 
         {{-- Total Price --}}
-        <div class="form-floating">
-            <input id="total-price" type="text" class="form-control" name="total-price" required
-                autocomplete="total-price" placeholder="Total Price" value="${{ number_format($order->total_price, 2) }}"
-                disabled />
-            <label for="total-price">Total Price</label>
+        <div>
+            <label for="total-price" class="block mb-2 text-sm font-medium text-gray-700">Total Price</label>
+            <input type="text" id="total-price"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="${{ number_format($order->total_price, 2) }}" disabled>
         </div>
-        {{-- End Of Total Price --}}
 
         {{-- User Id --}}
-        <div class="form-floating">
-            <input id="user-id" type="text" class="form-control" name="user-id" required autocomplete="user-id"
-                placeholder="User Id" value="{{ $order->user_id }}" disabled />
-            <label for="user-id">User Id</label>
+        <div>
+            <label for="user-id" class="block mb-2 text-sm font-medium text-gray-700">User Id</label>
+            <input type="text" id="user-id"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->user_id }}" disabled>
         </div>
-        {{-- End Of User Id --}}
 
         {{-- Order Items --}}
-        <div class="input-group">
-            <div class="form-floating">
-                <input id="order-items" type="text" class="form-control" name="order-items" required
-                    autocomplete="order-items" placeholder="Order Items" value="{{ $order->orderItems->count() }}"
-                    disabled />
-                <label for="order-items">Order Items</label>
+        <div>
+            <label for="order-items" class="block mb-2 text-sm font-medium text-gray-700">Order Items</label>
+            <div class="flex items-center">
+                <input type="text" id="order-items"
+                       class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-l-lg text-gray-500 cursor-not-allowed"
+                       value="{{ $order->orderItems->count() }}" disabled>
+                <a href="{{ route('dashboard.orders.orderItems', $order->id) }}"
+                   class="px-4 py-2 text-white bg-blue-600 rounded-r-lg hover:bg-blue-700">
+                    View more
+                </a>
             </div>
-            <a href="{{ route('dashboard.orders.orderItems', $order->id) }}" class="input-group-text">View
-                more</a>
         </div>
-        {{-- End Of Order Items --}}
 
         {{-- Created At --}}
-        <div class="form-floating">
-            <input id="created-at" type="text" class="form-control" name="created-at" required autocomplete="created-at"
-                placeholder="Created At" value="{{ $order->created_at->diffForHumans() }}" disabled />
-            <label for="created-at">Created At</label>
+        <div>
+            <label for="created-at" class="block mb-2 text-sm font-medium text-gray-700">Created At</label>
+            <input type="text" id="created-at"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->created_at->diffForHumans() }}" disabled>
         </div>
-        {{-- End Of Created At --}}
 
         {{-- Updated At --}}
-        <div class="form-floating">
-            <input id="updated-at" type="text" class="form-control" name="updated-at" required autocomplete="updated-at"
-                placeholder="Updated At" value="{{ $order->updated_at->diffForHumans() }}" disabled />
-            <label for="updated-at">Updated At</label>
+        <div>
+            <label for="updated-at" class="block mb-2 text-sm font-medium text-gray-700">Updated At</label>
+            <input type="text" id="updated-at"
+                   class="w-full p-2.5 bg-gray-100 border border-gray-300 rounded-lg text-gray-500 cursor-not-allowed"
+                   value="{{ $order->updated_at->diffForHumans() }}" disabled>
         </div>
-        {{-- End Of Updated At --}}
     </div>
 @endsection
