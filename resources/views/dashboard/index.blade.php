@@ -16,11 +16,11 @@
             <h5 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Total Customers</h5>
             <div class="flex items-center space-x-3">
                 <!-- Icon -->
-                <svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                <svg class="w-[43px] h-[43px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                   </svg>
                 <!-- Customer Number -->
-                <p class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">{{ $orders }}</p>
+                <p class="text-4xl font-extrabold text-black dark:text-blue-400">{{ $orders }}</p>
             </div>
         </div>
 
@@ -29,23 +29,33 @@
         <div class="p-6 transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
             <h5 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Total Products</h5>
             <div class="flex items-center space-x-3">
-                <svg class="w-[32px] h-[32px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M14 7h-4v3a1 1 0 0 1-2 0V7H6a1 1 0 0 0-.997.923l-.917 11.924A2 2 0 0 0 6.08 22h11.84a2 2 0 0 0 1.994-2.153l-.917-11.924A1 1 0 0 0 18 7h-2v3a1 1 0 1 1-2 0V7Zm-2-3a2 2 0 0 0-2 2v1H8V6a4 4 0 0 1 8 0v1h-2V6a2 2 0 0 0-2-2Z" clip-rule="evenodd"/>
+                <svg class="w-[37px] h-[37px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
                   </svg>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                  </svg>
-                <p class="text-4xl font-extrabold text-green-600 dark:text-green-400">{{ $products }}</p>
+                <p class="text-4xl font-extrabold text-black dark:text-green-400">{{ $products }}</p>
             </div>
         </div>
          {{-- Total Order Items Card --}}
         <div class="p-6 transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
         <h5 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Total Order Items</h5>
         <div class="flex items-center space-x-3">
-            <svg class="w-[35px] h-[35px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+            <svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
               </svg>
-        <p class="text-4xl font-extrabold text-purple-600 dark:text-purple-400">{{ $totalOrderItems }}</p>
+        <p class="text-4xl font-extrabold text-black dark:text-purple-400">{{ $totalOrderItems }}</p>
         </div>
+        </div>
+
+        {{-- Total Sale Amount --}}
+        <div class="p-6 transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+            <h5 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Total Sale Amount</h5>
+            <div class="flex items-center space-x-3">
+                <svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                  </svg>
+                <!-- Total Sale Amount -->
+                <p class="text-4xl font-extrabold text-black dark:text-red-400">${{ $totalSaleAmount }}</p>
+            </div>
         </div>
     </div>
 
@@ -70,6 +80,8 @@
                 <canvas id="categoryPieChart"></canvas>
             </div>
         </div>
+
+
     </div>
 
 @endsection
@@ -78,13 +90,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Revenue Chart
+    // Revenue Line Chart
     const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
     const revenueData = {
-        labels: @json($dates),
+        labels: @json($dates),  // Dates for the last 30 days
         datasets: [{
             label: 'Revenue',
-            data: @json($revenues),
+            data: @json($revenues), // Revenue data
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
@@ -93,24 +105,25 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     const revenueOptions = {
         responsive: true,
-
     };
     new Chart(ctxRevenue, { type: 'line', data: revenueData, options: revenueOptions });
 
-    // Category Pie Chart
-    const ctxCategory = document.getElementById('categoryPieChart').getContext('2d');
+      // Category Bar Chart
+      const ctxCategory = document.getElementById('categoryPieChart').getContext('2d');
     const categoryData = {
         labels: @json($categories->pluck('name')), // Category names
         datasets: [{
+            label: 'Number of Products',
             data: @json($categories->pluck('products_count')), // Product counts
-            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#F1C40F'], // Pie slice colors
-            hoverOffset: 4
+            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#F1C40F'], // Bar colors
+            borderColor: ['#C0392B', '#27AE60', '#2980B9', '#8E44AD', '#F39C12'], // Optional: Bar border colors
+            borderWidth: 1 // Optional: Bar border width
         }]
     };
     const categoryOptions = {
         responsive: true,
         plugins: {
-            legend: { position: 'top' },
+            legend: { display: false }, // Optionally hide legend for simplicity
             tooltip: {
                 callbacks: {
                     label: function(tooltipItem) {
@@ -118,8 +131,27 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Categories', // X-axis title
+                    font: { size: 14 }
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Number of Products', // Y-axis title
+                    font: { size: 14 }
+                },
+                beginAtZero: true // Ensures the Y-axis starts at 0
+            }
         }
     };
-    new Chart(ctxCategory, { type: 'pie', data: categoryData, options: categoryOptions });
+    new Chart(ctxCategory, { type: 'bar', data: categoryData, options: categoryOptions });
 });
 </script>
+
+

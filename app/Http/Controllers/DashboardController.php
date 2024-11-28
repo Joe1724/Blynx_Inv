@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\Category; // Add Category model
-use App\Models\OrderItem; // Add OrderItem model
+use App\Models\Category;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -13,43 +13,48 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Get order count
+        // Basic counts
         $ordersCount = Order::count();
-
-        // Get product count
         $productsCount = Product::count();
+        $totalOrderItems = OrderItem::count();
+        $totalSaleAmount = Order::sum('total_price');
 
-        // Get total order items count
-        $totalOrderItems = OrderItem::count(); // Count total order items
-
-        // Get revenue data for the last 30 days, grouped by date
+        // Revenue data for the last 30 days
         $revenueData = Order::select(
-                DB::raw('DATE(date) as date'),
+                DB::raw('DATE(created_at) as date'),
                 DB::raw('SUM(total_price) as total_revenue')
             )
-            ->where('date', '>=', Carbon::now()->subDays(30))
-            ->groupBy('date')
+            ->where('created_at', '>=', Carbon::now()->subDays(30))
+            ->groupBy(DB::raw('DATE(created_at)'))
             ->orderBy('date')
-            ->get();
+            ->get()
+            ->pluck('total_revenue', 'date')
+            ->toArray();
 
-        // Calculate total revenue
-        $totalRevenue = $revenueData->sum('total_revenue');
+        // Fill gaps in revenue data
+        $dates = [];
+        $revenues = [];
+        foreach (range(0, 29) as $day) {
+            $currentDate = Carbon::now()->subDays(29 - $day)->toDateString();
+            $dates[] = $currentDate;
+            $revenues[] = $revenueData[$currentDate] ?? 0;
+        }
 
-        // Format data for the chart
-        $dates = $revenueData->pluck('date')->toArray();
-        $revenues = $revenueData->pluck('total_revenue')->toArray();
-
-        // Fetch categories with the count of products in each category
+        // Fetch categories with product counts
         $categories = Category::withCount('products')->get();
+
+        // Total revenue using OrderItem model
+        $totalRevenue = OrderItem::revenueLast30Days();
 
         return view('dashboard.index', [
             'orders' => $ordersCount,
             'products' => $productsCount,
-            'totalOrderItems' => $totalOrderItems, // Pass total order items to the view
+            'totalOrderItems' => $totalOrderItems,
             'dates' => $dates,
             'revenues' => $revenues,
-            'categories' => $categories, // Pass categories data
-            'totalRevenue' => $totalRevenue, // Pass total revenue to the view
+            'categories' => $categories,
+            'totalRevenue' => $totalRevenue,
+            'totalSaleAmount' => $totalSaleAmount,
         ]);
     }
 }
