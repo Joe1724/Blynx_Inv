@@ -58,6 +58,8 @@ class Kernel extends HttpKernel
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'moderator' => \App\Http\Middleware\ModeratorMiddleware::class,
+        'preventModerator' => \App\Http\Middleware\PreventModeratorMiddleware::class,
+        'prevent.moderator.dashboard' => \App\Http\Middleware\PreventModeratorDashboardAccess::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,

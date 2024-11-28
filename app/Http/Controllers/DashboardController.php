@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Order;
@@ -7,10 +6,24 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        // Apply middleware to restrict access for moderators
+        $this->middleware(function ($request, $next) {
+            // Check if the user is logged in and their role is 'moderator' (assuming role ID 2)
+            if (Auth::check() && Auth::user()->role == 3) { // 2 represents 'moderator'
+                // Redirect moderators away from the dashboard
+                return redirect()->route('home')->with('error', 'Access denied for moderators.');
+            }
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         // Basic counts

@@ -40,11 +40,11 @@
                         <td class="px-6 py-4">
                             {{-- Display role based on ID --}}
                             @if ($user->role == 1)
-                                User
+                                Staff
                             @elseif ($user->role == 2)
-                                Admin
+                                maanager
                             @elseif($user->role==3)
-                                Moderator
+                                staff
                             @else
                             @endif
                         </td>
