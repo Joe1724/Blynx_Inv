@@ -44,7 +44,7 @@
                             @elseif ($user->role == 2)
                                 Admin
                             @elseif($user->role==3)
-                                moderator
+                                Moderator
                             @else
                             @endif
                         </td>
