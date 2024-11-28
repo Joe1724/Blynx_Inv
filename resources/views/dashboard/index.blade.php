@@ -54,7 +54,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
                   </svg>
                 <!-- Total Sale Amount -->
-                <p class="text-4xl font-extrabold text-black dark:text-red-400">${{ $totalSaleAmount }}</p>
+                <p class="text-4xl font-extrabold text-black dark:text-red-400">₱{{ $totalSaleAmount }}</p>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
         {{-- Revenue Chart --}}
         <div class="p-6 transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
             <h5 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Revenue (Last 30 Days)</h5>
-            <p class="mt-4 text-xl font-bold text-gray-900 dark:text-white">Total Revenue: ${{ number_format($totalRevenue, 2) }}</p>
+            <p class="mt-4 text-xl font-bold text-gray-900 dark:text-white">Total Revenue: ₱{{ number_format($totalRevenue, 2) }}</p>
             <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
                 <canvas id="revenueChart"></canvas>
             </div>
