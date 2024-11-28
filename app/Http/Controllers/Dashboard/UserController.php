@@ -67,40 +67,54 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(User $user): Response
-    {
-        $this->authorize('user-edit-update', $user);
+{
+    $this->authorize('user-edit-update', $user);
 
-        return response()
-            ->view('dashboard.user.edit', compact('user'));
-    }
+    $roles = Role::all(); // Fetch all roles
+
+    return response()
+        ->view('dashboard.user.edit', compact('user', 'roles')); // Pass roles to the view
+}
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(User $user): RedirectResponse
-    {
-        $this->authorize('user-edit-update', $user);
+{
+    $this->authorize('user-edit-update', $user);
 
-        $rules = [
-            'name' => 'required',
-            'email' => "required|email|unique:users,email,$user->id"
-        ];
-        if (request()->input('password')) {
-            $rules['password'] = 'required|min:8|confirmed';
-        }
-        request()->validate($rules);
+    $rules = [
+        'name' => 'required',
+        'email' => "required|email|unique:users,email,$user->id",
+        'role' => 'required|exists:roles,id',  // Validate role as the correct field name
+    ];
 
-        $user->name = request()->input('name');
-        $user->email = request()->input('email');
-        if (request()->input('password')) {
-            $user->password = Hash::make(request()->input('password'));
-        }
-        $user->save();
-
-        return redirect()
-            ->route('dashboard.users.index')
-            ->with('success', 'User successfully updated.');
+    if (request()->input('password')) {
+        $rules['password'] = 'required|min:8|confirmed';
     }
+
+    request()->validate($rules);
+
+    // Update user fields
+    $user->name = request()->input('name');
+    $user->email = request()->input('email');
+
+    // Update password if provided
+    if (request()->input('password')) {
+        $user->password = Hash::make(request()->input('password'));
+    }
+
+    // Update the role column (using 'role' as per your schema)
+    $user->role = request()->input('role');  // Corrected to 'role'
+    $user->save();
+
+    return redirect()
+        ->route('dashboard.users.index')
+        ->with('success', 'User successfully updated.');
+}
+
+
 
     /**
      * Remove the specified resource from storage.

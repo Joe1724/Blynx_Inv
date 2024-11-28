@@ -15,19 +15,25 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $products = Product::with(['user', 'category', 'orderItems'])
-            ->whereHas('category', function ($query) {
-                $category = request()->input('category');
-                if ($category == 'All' || empty($category)) {
-                    return;
-                }
+        $searchQuery = $request->input('search');
+        $category = $request->input('category');
 
-                $query->where('name', request()->input('category', ''));
+        $products = Product::with(['user', 'category', 'orderItems'])
+            // Apply search filter
+            ->when($searchQuery, function ($query) use ($searchQuery) {
+                $query->where('name', 'like', '%' . $searchQuery . '%');
+            })
+            // Apply category filter
+            ->when($category && $category !== 'All', function ($query) use ($category) {
+                $query->whereHas('category', function ($q) use ($category) {
+                    $q->where('name', $category);
+                });
             })
             ->paginate(10)
-            ->appends(request()->all());
+            ->appends($request->all());
+
         $categories = Category::all()->toArray();
         $categories[] = ['name' => 'All'];
 
