@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.order-items.index') }}"
-       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Back</a>
+    <a href="{{ route('dashboard.order-items.index') }}" class="btn btn-primary">Back</a>
 
-    <div class="mt-6">
-        <form class="flex flex-col gap-4" method="POST" action="{{ route('dashboard.order-items.store') }}">
+    <div class="mt-4">
+        <form class="gap-3 d-flex flex-column" method="POST" action="{{ route('dashboard.order-items.store') }}">
             @csrf
 
             {{-- Quantity --}}
+<<<<<<< HEAD
             <div class="relative">
                 <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
                 <input id="quantity" type="number"
@@ -24,13 +24,23 @@
                        focus:outline-none @error('quantity') border-red-500 @enderror"
                        name="quantity" required autocomplete="quantity" autofocus
                        placeholder=" " value="{{ old('quantity') }}">
+=======
+            <div class="form-floating">
+                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror"
+                    name="quantity" required autocomplete="quantity" autofocus placeholder="Quantity"
+                    value="{{ old('quantity') }}">
+                <label for="quantity">Quantity</label>
+>>>>>>> c63a4d71ec35c4542514ecb6b9eae7ef56922b08
 
                 @error('quantity')
-                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
             {{-- End Of Quantity --}}
 
+<<<<<<< HEAD
             {{-- Category --}}
             <div class="mb-4">
                 <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
@@ -54,11 +64,40 @@
             </div>
             {{-- End Of Product Id --}}
 
+=======
+            {{-- Product Id --}}
+            <div class="form-floating">
+                <input id="product_id" type="number" step="any"
+                    class="form-control @error('product_id') is-invalid @enderror" name="product_id" required
+                    autocomplete="product_id" autofocus placeholder="Product Id" value="{{ old('product_id') }}">
+                <label for="product_id">Product Id</label>
+
+                @error('product_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- End Of Product Id --}}
+
+            {{-- Order Id --}}
+            <div class="form-floating">
+                <input id="order_id" type="number" step="any"
+                    class="form-control @error('order_id') is-invalid @enderror" name="order_id" required
+                    autocomplete="order_id" autofocus placeholder="Order Id" value="{{ old('order_id') }}">
+                <label for="order_id">Order Id</label>
+
+                @error('order_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- End Of Order Id --}}
+
+>>>>>>> c63a4d71ec35c4542514ecb6b9eae7ef56922b08
             {{-- Button Submit --}}
-            <button type="submit"
-                    class="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                Save
-            </button>
+            <button class="py-2 btn btn-primary w-100" type="submit">Save</button>
             {{-- End Of Button Submit --}}
         </form>
     </div>

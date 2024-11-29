@@ -35,10 +35,29 @@
         </div>
     @endif
 
-    {{-- Add Product Button --}}
-    <a href="{{ route('dashboard.products.create') }}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
-        Create New Product
-    </a>
+    {{-- Add Product and Search Bar --}}
+    <div class="flex items-center justify-between mb-4">
+        <a href="{{ route('dashboard.products.create') }}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+            Create New Product
+        </a>
+
+        {{-- Search Form --}}
+        <form action="{{ route('dashboard.products.index') }}" method="GET" class="flex items-center">
+            <input
+                type="text"
+                name="search"
+                placeholder="Search products..."
+                value="{{ request()->input('search') }}"
+                class="px-4 py-2 text-sm border border-gray-300 rounded-l-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            />
+            <button
+                type="submit"
+                class="px-4 py-2 text-sm text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
+            >
+                Search
+            </button>
+        </form>
+    </div>
 
     {{-- Filter --}}
     <form action="{{ route('dashboard.products.index') }}" method="GET" class="mt-4">
@@ -97,7 +116,11 @@
                             @elseif ($product->quantity_in_stock > 0)
                                 <span class="px-2 py-1 text-sm text-white bg-red-800 rounded-lg">Low Stock</span>
                             @else
+<<<<<<< HEAD
                                 <span class="px-2 py-1 text-sm text-white bg-black rounded-lg"> Out of Stock</span>
+=======
+                                <span class="px-2 py-1 text-sm text-white bg-black rounded-lg">Out of Stock</span>
+>>>>>>> c63a4d71ec35c4542514ecb6b9eae7ef56922b08
                             @endif
                         </td>
                     </tr>

@@ -10,7 +10,10 @@ class Role extends Model
     use HasFactory;
 
     const USER = 1;
+
     const ADMIN = 2;
+
+    const MODERATOR = 3;
 
     protected $table = "roles";
     protected $primaryKey = "id";

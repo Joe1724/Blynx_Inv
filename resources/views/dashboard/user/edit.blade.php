@@ -34,7 +34,6 @@
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
-            {{-- End of Name --}}
 
             {{-- Email --}}
             <div>
@@ -51,7 +50,27 @@
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
-            {{-- End of Email --}}
+
+            {{-- Role --}}
+            <div>
+                <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                <select
+                    id="role"
+                    name="role"
+                    required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50 @error('role') border-red-500 @enderror"
+                >
+                    <option value="">Select Role</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" {{ old('role', $user->role) == $role->id ? 'selected' : '' }}>
+                            {{ $role->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('role')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
 
             {{-- Password --}}
             <div>
@@ -67,7 +86,6 @@
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
-            {{-- End of Password --}}
 
             {{-- Confirm Password --}}
             <div>
@@ -77,13 +95,12 @@
                     type="password"
                     name="password_confirmation"
                     autocomplete="password_confirmation"
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50 @error('password') border-red-500 @enderror"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50 @error('password_confirmation') border-red-500 @enderror"
                 />
-                @error('password')
+                @error('password_confirmation')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
-            {{-- End of Confirm Password --}}
 
             {{-- Submit Button --}}
             <div>
@@ -94,7 +111,6 @@
                     Save
                 </button>
             </div>
-            {{-- End of Submit Button --}}
         </form>
     </div>
 @endsection

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.users.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
+    <a href="{{ route('dashboard.users.index') }}" class="px-4 py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600">
         Back
     </a>
 
@@ -20,7 +20,7 @@
             <input
                 id="name"
                 type="text"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
                 value="{{ $user->name }}"
                 disabled
             />
@@ -33,25 +33,14 @@
             <input
                 id="email"
                 type="email"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
                 value="{{ $user->email }}"
                 disabled
             />
         </div>
         {{-- End of Email --}}
 
-        {{-- Role --}}
-        <div>
-            <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-            <input
-                id="role"
-                type="text"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
-                value="{{ $user->role === App\Models\Role::ADMIN ? 'Admin' : 'User' }}"
-                disabled
-            />
-        </div>
-        {{-- End of Role --}}
+
 
         {{-- Created At --}}
         <div>
@@ -59,7 +48,7 @@
             <input
                 id="created-at"
                 type="text"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
                 value="{{ $user->created_at->diffForHumans() }}"
                 disabled
             />
@@ -72,7 +61,7 @@
             <input
                 id="updated-at"
                 type="text"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-opacity-50"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
                 value="{{ $user->updated_at->diffForHumans() }}"
                 disabled
             />
