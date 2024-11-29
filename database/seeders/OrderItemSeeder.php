@@ -20,7 +20,8 @@ class OrderItemSeeder extends Seeder
             'quantity' => 100,
             'unit_price' => $product->price,
             'product_id' => $product->id,
-            'order_id' => $order->id
+            // 'category_id' => $product->category_id,
+            // 'order_id' => $order->id
         ]);
     }
 }
