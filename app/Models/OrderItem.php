@@ -26,6 +26,13 @@ class OrderItem extends Model
     {
         // Use the relationship to safely get the product name
         return $this->product?->name;
+
+
+    }
+    public static function revenueLast30Days(): float
+    {
+        return self::where('created_at', '>=', Carbon::now()->subDays(30))
+            ->sum(\DB::raw('quantity * unit_price'));
     }
     public function category()
     {

@@ -10,7 +10,7 @@
             @csrf
 
             <div class="space-y-6">
-                <h1 class="mb-6 text-3xl font-semibold text-center">Orland Watch</h1>
+                <h1 class="mb-6 text-3xl font-semibold text-center">Please log in</h1>
 
                 <!-- Email Input -->
                 <div class="relative">

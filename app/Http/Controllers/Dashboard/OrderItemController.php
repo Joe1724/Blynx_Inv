@@ -49,7 +49,7 @@ class OrderItemController extends Controller
                     ->back()
                     ->withErrors(['quantity' => 'The quantity is greater than the quantity in stock.']);
             }
-            
+
 
             // Create a new OrderItem
             $orderItem = new OrderItem();
@@ -182,4 +182,3 @@ class OrderItemController extends Controller
         }
     }
 }
-
