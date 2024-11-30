@@ -12,56 +12,54 @@
     <a href="{{ route('dashboard.order-items.index') }}" class="btn btn-primary">Back</a>
 
     <div class="mt-4">
-        <form class="gap-3 d-flex flex-column" method="POST" action="{{ route('dashboard.order-items.store') }}">
+        <form class="flex-col gap-3 d-flex" method="POST" action="{{ route('dashboard.order-items.store') }}">
             @csrf
 
             {{-- Quantity --}}
-            <div class="form-floating">
-                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror"
+            <div class="mb-4">
+                <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+                <input id="quantity" type="number" class="form-input @error('quantity') border-red-500 @enderror"
                     name="quantity" required autocomplete="quantity" autofocus placeholder="Quantity"
                     value="{{ old('quantity') }}">
-                <label for="quantity">Quantity</label>
 
                 @error('quantity')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             {{-- End Of Quantity --}}
 
             {{-- Product Id --}}
-            <div class="form-floating">
+            <div class="mb-4">
+                <label for="product_id" class="block text-sm font-medium text-gray-700">Product Id</label>
                 <input id="product_id" type="number" step="any"
-                    class="form-control @error('product_id') is-invalid @enderror" name="product_id" required
-                    autocomplete="product_id" autofocus placeholder="Product Id" value="{{ old('product_id') }}">
-                <label for="product_id">Product Id</label>
+                    class="form-input @error('product_id') border-red-500 @enderror"
+                    name="product_id" required autocomplete="product_id" placeholder="Product Id"
+                    value="{{ old('product_id') }}">
 
                 @error('product_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             {{-- End Of Product Id --}}
 
             {{-- Order Id --}}
-            <div class="form-floating">
+            <div class="mb-4">
+                <label for="order_id" class="block text-sm font-medium text-gray-700">Order Id</label>
                 <input id="order_id" type="number" step="any"
-                    class="form-control @error('order_id') is-invalid @enderror" name="order_id" required
-                    autocomplete="order_id" autofocus placeholder="Order Id" value="{{ old('order_id') }}">
-                <label for="order_id">Order Id</label>
+                    class="form-input @error('order_id') border-red-500 @enderror"
+                    name="order_id" required autocomplete="order_id" placeholder="Order Id"
+                    value="{{ old('order_id') }}">
 
                 @error('order_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             {{-- End Of Order Id --}}
 
             {{-- Button Submit --}}
-            <button class="py-2 btn btn-primary w-100" type="submit">Save</button>
+            <button type="submit" class="w-full py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                Save
+            </button>
             {{-- End Of Button Submit --}}
         </form>
     </div>

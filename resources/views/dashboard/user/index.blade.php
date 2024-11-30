@@ -42,7 +42,7 @@
                             @if ($user->role == 1)
                                 Staff
                             @elseif ($user->role == 2)
-                                maanager
+                                manager
                             @elseif($user->role==3)
                                 staff
                             @else
