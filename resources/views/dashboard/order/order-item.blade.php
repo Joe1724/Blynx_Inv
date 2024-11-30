@@ -9,11 +9,11 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('dashboard.orders.show', $order->id) }}"
-       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Back</a>
+    {{-- <a href="{{ route('dashboard.orders.show', $order->id) }}"
+       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Back</a> --}}
 
     {{-- Table --}}
-    <div class="mt-6 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+    {{-- <div class="mt-6 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-100">
                 <tr>
@@ -37,12 +37,12 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
 
         {{-- Pagination --}}
-        <div class="px-4 py-3 bg-gray-50 border-t">
+        {{-- <div class="px-4 py-3 bg-gray-50 border-t">
             {{ $orderItems->links('vendor.pagination.tailwind') }}
         </div>
-    </div>
+    </div> --}}
     {{-- End Of Table --}}
 @endsection

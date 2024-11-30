@@ -16,21 +16,23 @@ class OrderItem extends Model
     public $timestamps = true;
     public $increments = true;
 
-    protected $fillable = ['quantity', 'unit_price', 'product_id', 'order_id'];
+    protected $fillable = ['quantity', 'unit_price', 'category_id', 'product_id'];
 
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
-
-    public function order(): BelongsTo
+     public function getProductNameAttribute(): ?string
     {
-        return $this->belongsTo(Order::class, 'order_id', 'id');
-
+        // Use the relationship to safely get the product name
+        return $this->product?->name;
     }
-    public static function revenueLast30Days(): float
+    public function category()
     {
-        return self::where('created_at', '>=', Carbon::now()->subDays(30))
-            ->sum(\DB::raw('quantity * unit_price'));
+        return $this->belongsTo(Category::class);
     }
+    // public function order(): BelongsTo
+    // {
+    //     return $this->belongsTo(Order::class, 'order_id', 'id');
+    // }
 }

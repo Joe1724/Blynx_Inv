@@ -108,6 +108,31 @@
                             <span class="ms-3">Users</span>
                         </a>
                     </li>
+<<<<<<< HEAD
+
+
+                    {{-- <li>
+                        <a href="{{ route('dashboard.orders.index') }}" class="flex items-center p-2 text-white rounded-lg dark:text-gray-900 hover:bg-gray-100 hover:text-black group">
+                            <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-500 group-hover:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z"/>
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Order</span>
+                        </a>
+                    </li> --}}
+
+
+
+                    <li>
+                        <a href="{{ route('dashboard.order-items.index') }}" class="flex items-center p-2 rounded-lg text-white-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-black dark:group-hover:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l3.6-7H6.4M16 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-4 0H7.6M7.6 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap group-hover:text-black dark:group-hover:text-black">Order Items</span>
+                        </a>
+                    </li>
+
+=======
+>>>>>>> c63a4d71ec35c4542514ecb6b9eae7ef56922b08
                     @endif
 
                     <li>

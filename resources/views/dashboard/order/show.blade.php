@@ -54,7 +54,7 @@
         </div>
 
         {{-- Order Items --}}
-        <div>
+        {{-- <div>
             <label for="order-items" class="block mb-2 text-sm font-medium text-gray-700">Order Items</label>
             <div class="flex items-center">
                 <input type="text" id="order-items"
@@ -65,7 +65,7 @@
                     View more
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Created At --}}
         <div>

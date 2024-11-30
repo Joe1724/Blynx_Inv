@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Dashboard\OrderItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,8 @@ Route::middleware('guest')
 Route::post('logout', [LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+    Route::resource('order-items', OrderItemController::class)->names('dashboard.order-items');
+    Route::get('/get-products/{categoryId}', [OrderItemController::class, 'getProductsByCategory']);
+
+

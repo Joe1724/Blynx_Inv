@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{OrderItemStoreRequest, OrderItemUpdateRequest};
-use App\Models\{Order, OrderItem, Product};
+use App\Models\{OrderItem, Product, Category};
 use Illuminate\Http\{Response, RedirectResponse};
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +15,7 @@ class OrderItemController extends Controller
      */
     public function index(): Response
     {
-        $orderItems = OrderItem::with(['product', 'order'])->paginate(10);
+        $orderItems = OrderItem::with(['product', 'category'])->paginate(10); // Include category in relationships
 
         return response()
             ->view('dashboard.order-item.index', compact('orderItems'));
@@ -26,8 +26,11 @@ class OrderItemController extends Controller
      */
     public function create(): Response
     {
-        return response()
-            ->view('dashboard.order-item.create');
+        // Fetch all products and categories for dropdowns
+        $products = Product::select('id', 'name', 'category_id')->get();
+        $categories = Category::select('id', 'name')->get();
+
+        return response()->view('dashboard.order-item.create', compact('products', 'categories'));
     }
 
     /**
@@ -40,23 +43,23 @@ class OrderItemController extends Controller
         try {
             $product = Product::find($request->input('product_id'));
 
+            // Check if the quantity exceeds the stock
             if ($request->input('quantity') > $product->quantity_in_stock) {
                 return redirect()
                     ->back()
                     ->withErrors(['quantity' => 'The quantity is greater than the quantity in stock.']);
             }
+            
 
+            // Create a new OrderItem
             $orderItem = new OrderItem();
             $orderItem->quantity = $request->input('quantity');
             $orderItem->unit_price = $product->price;
             $orderItem->product_id = $request->input('product_id');
-            $orderItem->order_id = $request->input('order_id');
+            $orderItem->category_id = $request->input('category_id'); // Assign category
             $orderItem->save();
 
-            $order = Order::find($request->input('order_id'));
-            $order->total_price = $order->total_price + ($product->price * $orderItem->quantity);
-            $order->save();
-
+            // Update product stock
             $product->quantity_in_stock = $product->quantity_in_stock - $orderItem->quantity;
             $product->save();
 
@@ -70,8 +73,20 @@ class OrderItemController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'Failed to delete OrderItem.');
+                ->with('error', 'Failed to create OrderItem.');
         }
+    }
+     /**
+     * Get products by category.
+     */
+    public function getProductsByCategory($categoryId)
+    {
+        // Fetch products that belong to the selected category
+        $products = Product::where('category_id', $categoryId)->get();
+
+        return response()->json([
+            'products' => $products
+        ]);
     }
 
     /**
@@ -79,6 +94,8 @@ class OrderItemController extends Controller
      */
     public function show(OrderItem $orderItem): Response
     {
+        $orderItem->load(['product', 'category']); // Load category relationship
+
         return response()
             ->view('dashboard.order-item.show', compact('orderItem'));
     }
@@ -88,8 +105,11 @@ class OrderItemController extends Controller
      */
     public function edit(OrderItem $orderItem): Response
     {
+        $products = Product::select('id', 'name', 'quantity_in_stock', 'price')->get();
+        $categories = Category::select('id', 'name')->get();
+
         return response()
-            ->view('dashboard.order-item.edit', compact('orderItem'));
+            ->view('dashboard.order-item.edit', compact('orderItem', 'products', 'categories'));
     }
 
     /**
@@ -100,7 +120,6 @@ class OrderItemController extends Controller
         DB::beginTransaction();
 
         try {
-            $order = Order::find($orderItem->order_id);
             $product = Product::find($orderItem->product_id);
 
             $quantity = $request->input('quantity') - $orderItem->quantity;
@@ -110,16 +129,14 @@ class OrderItemController extends Controller
                     ->withErrors(['quantity' => 'The quantity is greater than the quantity in stock.']);
             }
 
+            // Update the product stock
             $product->quantity_in_stock -= $quantity;
             $product->save();
 
-            $total_price_current_order_item = $orderItem->quantity * $orderItem->unit_price;
-            $total_price_product = $product->price * $request->input('quantity');
-            $total_price = $order->total_price - $total_price_current_order_item;
-            $order->total_price = $total_price + $total_price_product;
-            $order->save();
-
+            // Update the order item
             $orderItem->quantity = $request->input('quantity');
+            $orderItem->unit_price = $product->price; // Update unit price if necessary
+            $orderItem->category_id = $request->input('category_id'); // Update category
             $orderItem->save();
 
             DB::commit();
@@ -144,16 +161,11 @@ class OrderItemController extends Controller
         DB::beginTransaction();
 
         try {
-            $total_price_order_item = $orderItem->quantity * $orderItem->unit_price;
-
-            $order = Order::find($orderItem->order_id);
-            $order->total_price = $order->total_price - $total_price_order_item;
-            $order->save();
-
             $product = Product::find($orderItem->product_id);
             $product->quantity_in_stock = $orderItem->quantity + $product->quantity_in_stock;
             $product->save();
 
+            // Delete the order item
             $orderItem->delete();
 
             DB::commit();
@@ -170,3 +182,4 @@ class OrderItemController extends Controller
         }
     }
 }
+

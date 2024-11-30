@@ -24,7 +24,10 @@ class OrderItemStoreRequest extends FormRequest
         return [
             'quantity' => 'required|integer|min:1',
             'product_id' => 'required|exists:products,id',
-            'order_id' => 'required|exists:orders,id'
+            'category_id' => 'required|exists:categories,id',
+
+            
+            // 'order_id' => 'required|exists:orders,id'
         ];
     }
 }

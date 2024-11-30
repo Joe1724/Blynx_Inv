@@ -42,7 +42,7 @@
                         <td class="px-4 py-2 border-b">{{ $order->customer_name }}</td>
                         <td class="px-4 py-2 border-b">{{ $order->customer_email }}</td>
                         <td class="px-4 py-2 border-b">${{ number_format($order->total_price, 2) }}</td>
-                        <td class="px-4 py-2 border-b">{{ $order->orderItems->count() }}</td>
+                        {{-- <td class="px-4 py-2 border-b">{{ $order->orderItems->count() }}</td> --}}
                         <td class="px-4 py-2 border-b">{{ $order->date }}</td>
                         <td class="flex gap-2 px-4 py-2 border-b">
                             <a href="{{ route('dashboard.orders.show', $order->id) }}" class="px-3 py-1 text-white bg-gray-500 rounded-md hover:bg-gray-600">

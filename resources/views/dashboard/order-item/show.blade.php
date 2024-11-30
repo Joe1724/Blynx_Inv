@@ -32,12 +32,12 @@
         </div>
 
         {{-- Order ID --}}
-        <div>
+        {{-- <div>
             <label for="order_id" class="block mb-2 text-sm font-medium text-gray-900">Order ID</label>
             <input type="number" id="order_id" name="order_id"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                    value="{{ $orderItem->order_id }}" disabled>
-        </div>
+        </div> --}}
 
         {{-- Unit Price --}}
         <div>
